@@ -1,4 +1,5 @@
-import React from "react";
+/* @fow */
+import * as React from "react";
 import PropTypes from "prop-types";
 import { CentredContainer as Container } from "../BlockContainer";
 import styled from "styled-components";
@@ -11,10 +12,15 @@ const Outer = styled.div`
   overflow: auto;
 `;
 
-const Core = ({ className, children }) => (
-  <Outer className={className}>
+type Props = {
+  className: string,
+  children: React.Node
+}
+
+const Core = (props: Props) => (
+  <Outer className={props.className}>
     <Container>
-      <Inner>{children}</Inner>
+      <Inner>{props.children}</Inner>
     </Container>
   </Outer>
 );

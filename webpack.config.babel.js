@@ -53,10 +53,18 @@ export default env => {
       ifDev(new webpack.HotModuleReplacementPlugin()),
       ifProd(
         new HtmlWebpackPlugin({
-          title: "Summer",
+          title: "Prod",
           filename: "templates/index.pug",
           template: path.join(__dirname, "src/server/templates/index.prod.pug")
         })
+      ),
+      ifProd(
+        new webpack.optimize.UglifyJsPlugin({
+          sourceMap: true,   // enable source maps to map errors (stack traces) to modules
+          output: {
+            comments: false, // remove all comments
+          },
+        }),
       ),
       ifProd(new HtmlWebpackPugPlugin()),
       new webpack.optimize.CommonsChunkPlugin({

@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+/* @flow */
+import * as React from "react";
 import styled from "styled-components";
 
 const Heading = styled.h1`font-size: 3em;`;
@@ -6,8 +7,8 @@ const Subheading = styled.h2`
   font-size: 2em;
   padding: 1em 0;
 `;
-class Home extends Component {
-  render() {
+class Home extends React.Component {
+  render(): React.Node {
     return (
       <div>
         <Heading>React Universal Starter</Heading>

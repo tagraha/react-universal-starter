@@ -1,3 +1,4 @@
+/* @flow */
 import fetch from "isomorphic-fetch";
 import {
   INCREMENT,
@@ -7,25 +8,43 @@ import {
   FETCH_GITHUB_USERS_FAIL
 } from "../constants";
 
-export function incrementCounter() {
+type IncrementAction = { type: INCREMENT };
+type DecrementAction = { type: DECREMENT };
+type FetchingGithubUsers = { type: FETCHING_GITHUB_USERS, payload: object };
+type FetchedGithubUsers = { type: FETCHED_GITHUB_USERS, payload: object };
+type FetchGithubUsersFail = { type: FETCH_GITHUB_USERS_FAIL, payload: object};
+
+type Action = 
+  | IncrementAction
+  | DecrementAction
+  | FetchingGithubUsers
+  | FetchedGithubUsers
+  | FetchGithubUsersFail
+
+type Dispatch = (action: Action | ThunkAction | PromiseAction) => any;
+type GetState = () => State;
+type ThunkAction = (dispatch: Dispatch, getState: GetState) => any;
+type PromiseAction = Promise<Action>;
+
+export function incrementCounter(): IncrementAction {
   return {
     type: INCREMENT
   };
 }
 
-export function decrementCounter() {
+export function decrementCounter(): DecrementAction {
   return {
     type: DECREMENT
   };
 }
 
-export function fetchingGithubUsers() {
+export function fetchingGithubUsers(): FetchingGithubUsers {
   return {
     type: FETCHING_GITHUB_USERS,
     payload: {}
   };
 }
-export function fetchedGithubUsers(data) {
+export function fetchedGithubUsers(data: object): FetchedGithubUsers {
   return {
     type: FETCHED_GITHUB_USERS,
     payload: {
@@ -33,7 +52,7 @@ export function fetchedGithubUsers(data) {
     }
   };
 }
-export function fetchGithubUsersFail(error) {
+export function fetchGithubUsersFail(error: object): FetchGithubUsersFail {
   return {
     type: FETCH_GITHUB_USERS_FAIL,
     payload: {
@@ -42,7 +61,7 @@ export function fetchGithubUsersFail(error) {
   };
 }
 
-export function fetchGithubUsers() {
+export function fetchGithubUsers(): ThunkAction {
   return (dispatch, getState) => {
     const state = getState();
     if (state.githubUsers.data) {

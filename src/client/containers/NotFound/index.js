@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+/* @flow */
+import * as React from "react";
 import styled from "styled-components";
 
 const Heading = styled.h1`font-size: 3em;`;
@@ -15,8 +16,8 @@ const Banner = styled.img`
   margin: auto;
 `;
 
-class NotFoundPage extends Component {
-  render() {
+class NotFoundPage extends React.Component {
+  render(): React.Node {
     return (
       <div>
         <Heading>Oops!</Heading>

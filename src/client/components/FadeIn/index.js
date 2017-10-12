@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+/* @flow */
+import * as React from "react";
 import styled from "styled-components";
 
 const FadeIn = styled.div`
@@ -8,7 +9,7 @@ const FadeIn = styled.div`
   transition: all 1s ease;
 `;
 
-class FadeInWrapper extends Component {
+class FadeInWrapper extends React.Component {
   state = {
     visible: false
   };
@@ -19,7 +20,7 @@ class FadeInWrapper extends Component {
       });
     }, 200);
   }
-  render() {
+  render(): React.Node {
     return <FadeIn visible={this.state.visible} {...this.props} />;
   }
 }

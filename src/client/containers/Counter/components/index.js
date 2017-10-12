@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+/* @flow */
+import * as React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -13,13 +14,19 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-class CounterComponent extends Component {
+type Props = {
+  value: number,
+  increment: func,
+  decrement: func
+}
+
+class CounterComponent extends React.Component<Props> {
   static propTypes = {
     value: PropTypes.number,
     increment: PropTypes.func,
     decrement: PropTypes.func
   };
-  render() {
+  render(): React.Node {
     return (
       <div>
         <p>

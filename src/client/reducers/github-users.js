@@ -1,18 +1,18 @@
+/* @flow */
 import {
   FETCHING_GITHUB_USERS,
   FETCHED_GITHUB_USERS,
   FETCH_GITHUB_USERS_FAIL
 } from "../constants";
 
-export default function githubUsers(
-  state = {
-    isLoading: false,
-    data: null,
-    error: null
-  },
-  { type, payload }
-) {
-  switch (type) {
+const initialStates= {
+  isLoading: false,
+  data: null,
+  error: null
+}
+
+export default function githubUsers(state: State = initialStates, action: Action): State {
+  switch (action.type) {
     case FETCHING_GITHUB_USERS:
       return {
         isLoading: true,
@@ -23,13 +23,13 @@ export default function githubUsers(
       return {
         isLoading: false,
         error: null,
-        data: payload.data
+        data: action.payload.data
       };
     case FETCH_GITHUB_USERS_FAIL:
       return {
         isLoading: false,
         data: null,
-        error: payload.error
+        error: action.payload.error
       };
     default:
       return state;

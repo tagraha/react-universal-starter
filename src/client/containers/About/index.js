@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+/* @flow */
+import * as React from "react";
 import styled from "styled-components";
 
 const Heading = styled.h1`font-size: 3em;`;
@@ -8,8 +9,8 @@ const Lipsum = styled.p`
   margin: 1em auto;
 `;
 
-class About extends Component {
-  render() {
+class About extends React.Component {
+  render(): React.Node {
     return (
       <div>
         <Heading>About</Heading>

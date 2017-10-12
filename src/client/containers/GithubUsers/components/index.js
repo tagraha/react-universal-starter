@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+/* @flow */
+import * as React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -18,7 +19,13 @@ const User = styled.a`
 
 const UserName = styled.p`margin-top: 0.5em;`;
 
-class GithubUsers extends Component {
+type Props = {
+  fetchGithubUsers: func,
+  githubUsers: object,
+  history: object
+}
+
+class GithubUsers extends React.Component<Props> {
   static propTypes = {
     fetchGithubUsers: PropTypes.func.isRequired,
     githubUsers: PropTypes.object.isRequired,
@@ -46,7 +53,7 @@ class GithubUsers extends Component {
     }
     return null;
   }
-  render() {
+  render(): React.Node {
     return (
       <div>
         <h1> Github Users</h1>

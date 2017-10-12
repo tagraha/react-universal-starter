@@ -1,4 +1,9 @@
 {
-  "presets": ["env", "react", "stage-0"],
-  "plugins": ["react-hot-loader/babel", "dynamic-import-webpack"]
+  "presets": ["env", "react", "stage-0", "flow"],
+  "plugins": ["react-hot-loader/babel", "dynamic-import-webpack"],
+  "env": {
+    "production": {
+      "plugins": ["transform-react-remove-prop-types"]
+    }
+  }
 }

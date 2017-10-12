@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+/* @flow */
+import * as React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import bundle from "./bundle";
@@ -139,12 +140,16 @@ export const loadData = [
 ];
 //========================
 
+type Props = {}
+
+type State = {}
+
 //========================
 // APP
 // This is the app component which is universal and can be rendered on the client
 // and the server
-export default class App extends Component {
-  render() {
+export default class App extends React.Component<Props, State> {
+  render(): React.Node {
     return (
       <Root>
         <RootMain>

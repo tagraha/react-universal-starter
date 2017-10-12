@@ -1,7 +1,8 @@
+/* @flow */
 import { INCREMENT, DECREMENT } from "../constants";
 
-export default function counter(state = 0, { type }) {
-  switch (type) {
+export default function counter(state: State = 0, action: Action): State {
+  switch (action.type) {
     case INCREMENT:
       return state + 1;
     case DECREMENT:
